@@ -39,16 +39,6 @@ int main(int argc, char *argv[]){
     // ...
     // ...  
 
-     // Print f values
-    if (rank==3){ // print only rank 0 for convenience
-        printf("My rank %d of %d\n", rank, size );
-        printf("Here are my values for f including ghost cells\n");
-        for (i=0; i<nxn_loc; i++)
-	       printf("%f\n", f[i]);
-        printf("\n");
-
-    }  
-
     MPI_Sendrecv(&f[nxn_loc-3], 1, MPI_DOUBLE, modulo(rank+1, size), 0, 
                 &f[0], 1, MPI_DOUBLE, modulo(rank-1, size), 0, 
                 MPI_COMM_WORLD, MPI_STATUS_IGNORE);
@@ -74,7 +64,7 @@ int main(int argc, char *argv[]){
 	       printf("%f\n", f[i]);
         printf("\n");
 
-        printf("Here are my values for dfdx including ghost cells\n");
+        printf("Here are my values for dfdx\n");
         for (i=1; i<(nxn_loc-1); i++)
 	       printf("%f\n", dfdx[i]);
         printf("\n");

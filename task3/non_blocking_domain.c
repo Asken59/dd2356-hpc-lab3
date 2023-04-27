@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
 	       printf("%f\n", f[i]);
         printf("\n");
 
-        printf("Here are my values for dfdx including ghost cells\n");
+        printf("Here are my values for dfdx\n");
         for (i=1; i<(nxn_loc-1); i++)
 	       printf("%f\n", dfdx[i]);
         printf("\n");
