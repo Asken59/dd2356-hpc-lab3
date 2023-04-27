@@ -42,6 +42,15 @@ int main(int argc, char *argv[]){
       f[i] = sin(L_loc*rank + (i-1) * dx);
 
 
+    // Print the last domain f-values
+    if (rank==size-1) {
+        printf("My rank %d of %d\n", rank, size );
+        printf("Here are my values for f including ghost cells\n");
+        for (i=0; i<nxn_loc; i++)
+	       printf("%f\n", f[i]);
+        printf("\n");
+    }
+
     // need to communicate and fill ghost cells f[0] and f[nxn_loc-1]
     // communicate ghost cells
     // ...
